@@ -63,9 +63,6 @@ class App extends Component {
           changed={this.inputNameChanged}
           name={this.state.userName} />
         <UserOutput 
-          
-          name={this.state.userName} />
-        <UserOutput 
           name={this.state.userName} />
         <Person 
           name={this.state.persons[0].name} 

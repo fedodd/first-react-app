@@ -1,7 +1,5 @@
 import React from 'react';
 import './UserOutput.css';
-import { red } from 'ansi-colors';
-
 
 const userOutput = (props) => {
   const style = {
