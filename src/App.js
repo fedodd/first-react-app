@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import ValidationComponent from './ValidationComponent/ValidationComponent';
+import CharComponent from './CharComponent/CharComponent';
+
 
 class App extends Component {
   state = {
@@ -9,21 +12,20 @@ class App extends Component {
       { id: 'asdf2', name: 'Liuda', age: 18 },
       { id: 'asdf3', name: 'Uliana', age: 1.7 }
     ],
-    showPersons: false
+    showPersons: false,
+    inputText: [{text: '11', inputTextLength: 0 }]
   }
 
   nameChangedHandler = (event, id) => {
+    
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     })
 
     const person = {...this.state.persons[personIndex]};
-
     person.name = event.target.value;
-
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-
     this.setState({persons: persons});  
   }
 
@@ -37,6 +39,20 @@ class App extends Component {
     const doesShow = this.state.showPersons;
     this.setState({showPersons: !doesShow}); /* переключаем  true/false */
   }
+
+
+  textLengthHandler = (event) => {
+    const inputText = [...this.state.inputText];
+    inputText.text = event.target.value;
+    inputText.inputTextLength = inputText.text.length;
+    this.setState({ inputText: inputText});
+  }
+
+  deleteCharHandler = (letters) => {
+    letters.splice(personIndex, 1);
+    this.setState({ persons: persons });
+  }
+
 
   render() {
 
@@ -64,10 +80,26 @@ class App extends Component {
       );
     }
 
+    
+    let letters = this.state.inputText.text;
+    let letterstoArrow = '';
+    if (letters != undefined) {
+      let letterstoArrow = letters.split('');
+    }
+
+
     return (
       <div className="App">
         <h1>Hello! I'm a first react app!</h1>
         <p>Some text</p>
+        <input type="text" onChange={this.textLengthHandler}></input>
+        <p>Lenght of input text: {this.state.inputText.inputTextLength}</p>
+        <ValidationComponent 
+          textLength={this.state.inputText.inputTextLength}/>
+        <CharComponent 
+          click={() => this.deleteCharHandler(letterstoArrow)}
+          text={letterstoArrow}
+          />
         <button 
           style={style} 
           onClick={this.togglePersonsHandler}>Toggle person</button>
