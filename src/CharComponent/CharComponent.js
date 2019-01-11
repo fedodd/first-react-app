@@ -1,6 +1,5 @@
 import React from 'react';
 import './CharComponent.css'
-import { map } from 'rsvp';
 
 const CharComponent = (props) => {    
   
