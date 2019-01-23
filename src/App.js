@@ -7,7 +7,6 @@ export const AuthContext = React.createContext(false);
 class App extends PureComponent {
 
   render() {
-    console.log('[App.js] Inside render()');
 
     return (
       <div>
