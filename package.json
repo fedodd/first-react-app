@@ -27,8 +27,14 @@
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "object-assign": "4.1.1",
+    "postcss": "^6.0.21",
+    "postcss-conditionals": "^2.1.0",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-loader": "^2.1.4",
+    "postcss-mixins": "^6.2.0",
+    "postcss-nested": "^3.0.0",
+    "postcss-simple-vars": "^4.1.0",
     "postcss-flexbugs-fixes": "3.2.0",
-    "postcss-loader": "2.0.6",
     "promise": "8.0.1",
     "prop-types": "^15.7.2",
     "radium": "^0.19.4",
@@ -63,8 +69,8 @@
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      "^.+\\.(css|pcss)$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|pcss|json)$)": "<rootDir>/config/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
@@ -88,5 +94,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "postcss-preset-env": "^6.6.0"
   }
 }

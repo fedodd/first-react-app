@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import classes from './Cockpit.css';
+import classes from './Cockpit.pcss';
 import AuthContext from '../../context/auth-context';
 
 const cockpit = ( props ) => {

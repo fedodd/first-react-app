@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/withClass';
-import classes from './Person.css';
+import classes from './Person.pcss';
 import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
