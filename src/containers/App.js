@@ -6,6 +6,9 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
 import AuthContext from '../context/auth-context';
+import ReactTable from "react-table";
+import 'react-table/react-table.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -88,6 +91,50 @@ class App extends Component {
 
 
   render() {
+/* TABLE */
+
+    const data = [{
+      name: 'Tanner Linsley',
+      age: 26,
+      friend: {
+            name: 'Jason Maurer',
+            age: 23,
+          }
+        }, {
+            name: 'Tanner Linsley',
+            age: 26,
+            friend: {
+              name: 'Jason Maurer',
+              age: 23,
+            }
+          }, {
+            name: 'Tanner Linsley',
+            age: 26,
+            friend: {
+              name: 'Jason Maurer',
+              age: 23,
+            }
+          }
+    ];
+
+    const columns = [{
+      Header: 'Name',
+      accessor: 'name' // String-based value accessors!
+    }, {
+      Header: 'Age',
+      accessor: 'age',
+      Cell: props => <span className='number'>{props.value}</span> // Custom cell components!
+    }, {
+      id: 'friendName', // Required because our accessor is not a string
+      Header: 'Friend Name',
+      accessor: d => d.friend.name // Custom value accessors!
+    }, {
+      Header: props => <span>Friend Age</span>, // Custom header components!
+      accessor: 'friend.age'
+    }]
+
+
+/* END TABLE */
     console.log('[App.js] render');
     let persons = null;
 
@@ -121,6 +168,13 @@ class App extends Component {
           ) : null}
           {persons}
         </AuthContext.Provider>
+          
+
+        <ReactTable
+          data={data}
+          columns={columns}
+          vclassName="-striped -highlight"
+        />
       </Aux>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
