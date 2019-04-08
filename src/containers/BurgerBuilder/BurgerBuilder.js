@@ -18,19 +18,22 @@ const INGREDIENT_PRICES = {
 class BurgerBuilder extends Component {
   state = {
     ingredients: null,
-
     totalPrice: 4,
     purchasable: false,
     purchasing: false,
-    loading: false
+    loading: false,
+    error: false
   }
 
   componentDidMount () {
-    axios.get('https://react-app-bc4e6.firebaseio.com/ingredients')
+    axios.get('https://react-app-bc4e6.firebaseio.com/ingredients.json')
       .then(response => {
-        console.log(response.data);
         this.setState({ingredients: response.data});
       })
+      .catch(error => {
+        this.setState({error: true})
+      });
+
   }
 
   updatePurchaseState(ingredients) {
@@ -128,7 +131,7 @@ class BurgerBuilder extends Component {
     }
     
     let orderSummary = null;
-    let burger = <Spinner />;
+    let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />;
 
     if (this.state.ingredients) {
       burger = (

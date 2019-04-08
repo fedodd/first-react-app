@@ -5,9 +5,7 @@ import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 export const AuthContext = React.createContext(false);
 
 class App extends PureComponent {
-
   render() {
-
     return (
       <div>
         <Layout>
