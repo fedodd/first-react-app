@@ -1,17 +1,15 @@
-import React, { PureComponent } from 'react';
-import Layout from './hoc/Layout/Layout';
-import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import React, { Component } from 'react';
+import {BrowserRouter} from 'react-router-dom';
+import Blog from './containers/Blog/Blog';
 
-export const AuthContext = React.createContext(false);
-
-class App extends PureComponent {
+class App extends Component {
   render() {
     return (
-      <div>
-        <Layout>
-          <BurgerBuilder />
-        </Layout>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Blog />
+        </div>
+      </BrowserRouter>
     );
   }
 }
