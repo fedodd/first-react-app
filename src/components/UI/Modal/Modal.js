@@ -8,9 +8,6 @@ class Modal extends Component {
     console.log('[Modal] did update');
   }
 
-  getSnapshotBeforeUpdate() {
-    console.log('[Modal] will update');
-  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
